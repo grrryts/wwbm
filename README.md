@@ -1,4 +1,5 @@
 # Who Wants to Be a Millionaire
+
 A fun and interactive pet project inspired by Who Wants to Be a Millionaire.
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
