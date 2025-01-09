@@ -17,6 +17,14 @@ export const muiTypographyOverride: Partial<Components<Theme>> = {
         [breakpoints.down('sm')]: {
           fontSize: '2rem', // 32px
         },
+
+        [breakpoints.up('xxl')]: {
+          fontSize: '4rem', // 64px
+        },
+
+        [breakpoints.up('xxxl')]: {
+          fontSize: '6rem', // 80px
+        },
       }),
       h2: ({ theme: { breakpoints, palette } }) => ({
         fontSize: '2rem', // 32px
@@ -29,14 +37,18 @@ export const muiTypographyOverride: Partial<Components<Theme>> = {
         },
       }),
       subtitle1: ({ theme: { breakpoints, palette } }) => ({
-        fontSize: '2rem', // 32px
+        fontSize: '1.125rem', // 18px
         lineHeight: 1.16,
         fontWeight: 600,
         color: palette.text.primary,
         opacity: 0.5,
 
-        [breakpoints.down('sm')]: {
-          fontSize: '1.125rem', // 18px
+        [breakpoints.up('sm')]: {
+          fontSize: '2rem', // 32px
+        },
+
+        [breakpoints.up('xxxl')]: {
+          fontSize: '3rem', // 48px
         },
       }),
       body1: ({ theme: { breakpoints, palette } }) => ({
@@ -53,8 +65,6 @@ export const muiTypographyOverride: Partial<Components<Theme>> = {
     defaultProps: {
       variantMapping: {
         // Map the new variant to render a <tag> by default
-        h1: 'h1',
-        h2: 'h2',
         subtitle1: 'h2',
         subtitle2: 'p',
       },
