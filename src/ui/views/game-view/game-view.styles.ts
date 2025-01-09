@@ -1,0 +1,114 @@
+import { SxProps, useTheme } from '@mui/material';
+
+export const useGameViewStyles = () => {
+  const { palette, breakpoints } = useTheme();
+
+  const wrapper: SxProps = {
+    flex: 1,
+    backgroundColor: palette.background.paper,
+    pt: 2,
+    pb: 3,
+    display: 'flex',
+    flexDirection: 'column',
+
+    [breakpoints.up('md')]: {
+      pr: 47,
+      pl: 7.5,
+      py: 7.5,
+    },
+
+    [breakpoints.up('lg')]: {
+      pl: 10,
+      pt: 16.5,
+      pb: 15.25,
+    },
+  };
+
+  const navBar: SxProps = {
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    px: 2,
+
+    [breakpoints.up('md')]: {
+      display: 'none',
+    },
+  };
+
+  const menuButton: SxProps = {
+    p: 0,
+  };
+
+  const content: SxProps = {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    flex: 1,
+
+    [breakpoints.up('md')]: {
+      pr: 7.5,
+      alignItems: 'flex-start',
+    },
+
+    [breakpoints.up('lg')]: {
+      pr: 17.5,
+    },
+  };
+
+  const questionWrapper: SxProps = {
+    flex: 1,
+    px: 2,
+    textAlign: 'center',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+
+    [breakpoints.between('sm', 'md')]: {
+      px: 5,
+    },
+
+    [breakpoints.up('md')]: {
+      px: 0,
+    },
+
+    [breakpoints.up('lg')]: {
+      textAlign: 'left',
+      justifyContent: 'flex-start',
+      maxWidth: '85%',
+    },
+
+    [breakpoints.up('xl')]: {
+      maxWidth: '70%',
+    },
+  };
+
+  const answersWrapper: SxProps = {
+    width: 1,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: 1,
+
+    [breakpoints.up('md')]: {},
+  };
+
+  const prizeList: SxProps = {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    width: '100%',
+    gap: 1,
+  };
+
+  return {
+    wrapper,
+    navBar,
+    menuButton,
+    content,
+    questionWrapper,
+    answersWrapper,
+    prizeList,
+  };
+};
