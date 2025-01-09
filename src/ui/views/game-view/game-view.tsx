@@ -1,38 +1,38 @@
 import React, { memo } from 'react';
 
+import { CSSTransition } from 'react-transition-group';
+
 import { Box, IconButton, SvgIcon, Typography } from '@mui/material';
 
 import { SidebarDrawer } from './components';
+import { TRANSITION_WRAPPER_TIMEOUT, prefixMap } from './game-view.constants';
 import { useGameViewLogic } from './game-view.logic';
 import { useGameViewStyles } from './game-view.styles';
 import { icons } from '@/lib/constants/icons.constants';
 import { AnswerOption } from '@/ui/components';
 import PrizeOption from '@/ui/components/prize-option/prize-option';
-
-const prefixMap: Record<number, string> = {
-  0: 'A',
-  1: 'B',
-  2: 'C',
-  3: 'D',
-  4: 'E',
-  5: 'F',
-};
-
-//* todo:
-//* 2. draw the main content (with adaptive styles)
-//* 3. add the logic for the game
-//* 4. adaptive styles for large screens
+import '@/ui/css-transitions/fade-transition.css';
 
 const GameView = memo(() => {
-  const { prizes, questionText, answers, showNav, open, onToggleDrawer } =
-    useGameViewLogic();
+  const {
+    prizeOptions,
+    questionText,
+    answers,
+    showNav,
+    open,
+    inFade,
+    questionRef,
+    answersRef,
+    onToggleDrawer,
+    onChooseAnswer,
+  } = useGameViewLogic();
   const sx = useGameViewStyles();
 
   return (
     <Box sx={sx.wrapper}>
       <SidebarDrawer open={open} onToggleDrawer={onToggleDrawer}>
         <Box sx={sx.prizeList}>
-          {prizes.toReversed().map((prize) => (
+          {prizeOptions.toReversed().map((prize) => (
             <PrizeOption key={prize.value} prize={prize} />
           ))}
         </Box>
@@ -48,18 +48,38 @@ const GameView = memo(() => {
         )}
 
         <Box sx={sx.questionWrapper}>
-          <Typography variant="h2">{questionText}</Typography>
+          <CSSTransition
+            in={inFade}
+            timeout={TRANSITION_WRAPPER_TIMEOUT}
+            nodeRef={questionRef}
+            classNames="fade"
+            unmountOnExit
+          >
+            <Box ref={questionRef}>
+              <Typography variant="h2">{questionText}</Typography>
+            </Box>
+          </CSSTransition>
         </Box>
 
         <Box sx={sx.answersWrapper}>
-          {answers.map((answer, idx) => (
-            <AnswerOption
-              key={answer.text}
-              answer={answer}
-              prefix={prefixMap[idx]}
-              onClick={() => {}} //* todo: provide the action for the answer selection
-            />
-          ))}
+          <CSSTransition
+            in={inFade}
+            timeout={TRANSITION_WRAPPER_TIMEOUT}
+            nodeRef={answersRef}
+            classNames="fade"
+            unmountOnExit
+          >
+            <Box ref={answersRef}>
+              {answers.map(({ ...answer }, idx) => (
+                <AnswerOption
+                  key={answer.text}
+                  answer={answer}
+                  prefix={prefixMap[idx]}
+                  onClick={() => onChooseAnswer(answer)}
+                />
+              ))}
+            </Box>
+          </CSSTransition>
         </Box>
       </Box>
     </Box>

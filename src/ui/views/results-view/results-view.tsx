@@ -7,9 +7,10 @@ import { Box, Button, Typography } from '@mui/material';
 import { useResultsViewLogic } from './results-view.logic';
 import { useResultsViewStyles } from './results-view.styles';
 import { images } from '@/lib/constants/images.constants';
+import { formatPrize } from '@/lib/utils/format-prize';
 
 const ResultsView = memo(() => {
-  const { handleChangeViewStep } = useResultsViewLogic();
+  const { currentPrize, handleChangeViewStep } = useResultsViewLogic();
   const sx = useResultsViewStyles();
 
   return (
@@ -28,7 +29,9 @@ const ResultsView = memo(() => {
         <Box sx={sx.actionsWrapper}>
           <Box sx={sx.actionsScoreWrapper}>
             <Typography variant="subtitle1">Total score:</Typography>
-            <Typography variant="h1">$8,000 earned</Typography>
+            <Typography variant="h1">
+              {formatPrize(currentPrize)} earned
+            </Typography>
           </Box>
 
           <Button onClick={handleChangeViewStep}>Try again</Button>

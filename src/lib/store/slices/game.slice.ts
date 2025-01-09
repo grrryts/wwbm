@@ -36,7 +36,20 @@ const initialState: GameStore = {
 const gameSlice = createSlice({
   name: 'game',
   initialState,
-  reducers: {},
+  reducers: {
+    onSelectCorrectAnswer: (state) => {
+      state.currentPrize = state.prizes[state.currentQuestionIndex];
+
+      if (state.currentQuestionIndex < state.questions.length - 1) {
+        state.currentQuestionIndex += 1;
+      }
+    },
+
+    onClearResults: (state) => {
+      state.currentQuestionIndex = 0;
+      state.currentPrize = 0;
+    },
+  },
 });
 
 export const selectPrizesOptions = createSelector(
@@ -60,5 +73,5 @@ export const selectCurrentQuestion = (state: RootState) => {
   return questions[currentQuestionIndex];
 };
 
-export const {} = gameSlice.actions;
+export const { onSelectCorrectAnswer, onClearResults } = gameSlice.actions;
 export default gameSlice.reducer;

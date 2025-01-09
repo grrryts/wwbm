@@ -22,6 +22,10 @@ export const useGameViewStyles = () => {
       pt: 16.5,
       pb: 15.25,
     },
+
+    [breakpoints.up('xxxl')]: {
+      pr: 60,
+    },
   };
 
   const navBar: SxProps = {
@@ -85,13 +89,30 @@ export const useGameViewStyles = () => {
   };
 
   const answersWrapper: SxProps = {
-    width: 1,
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    gap: 1,
+    width: '100%',
 
-    [breakpoints.up('md')]: {},
+    '> div': {
+      width: 1,
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      gap: 1,
+
+      [breakpoints.up('md')]: {
+        maxWidth: '52.75rem',
+      },
+
+      [breakpoints.up('lg')]: {
+        display: 'grid',
+        gridTemplateColumns: 'repeat(2, 1fr)',
+        gap: '0.5rem 0',
+      },
+
+      [breakpoints.up('xl')]: {
+        width: '100%',
+        maxWidth: 'unset',
+      },
+    },
   };
 
   const prizeList: SxProps = {
@@ -100,6 +121,10 @@ export const useGameViewStyles = () => {
     alignItems: 'center',
     width: '100%',
     gap: 1,
+
+    [breakpoints.up('xxxl')]: {
+      gap: 2.5,
+    },
   };
 
   return {

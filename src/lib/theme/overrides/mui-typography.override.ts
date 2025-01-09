@@ -27,13 +27,17 @@ export const muiTypographyOverride: Partial<Components<Theme>> = {
         },
       }),
       h2: ({ theme: { breakpoints, palette } }) => ({
-        fontSize: '2rem', // 32px
+        fontSize: '1.125rem', // 18px
         lineHeight: 1.16,
         fontWeight: 600,
         color: palette.text.primary,
 
-        [breakpoints.down('sm')]: {
-          fontSize: '1.125rem', // 18px
+        [breakpoints.up('sm')]: {
+          fontSize: '2rem', // 32px
+        },
+
+        [breakpoints.up('xxxl')]: {
+          fontSize: '3rem', // 48px
         },
       }),
       subtitle1: ({ theme: { breakpoints, palette } }) => ({
@@ -52,13 +56,17 @@ export const muiTypographyOverride: Partial<Components<Theme>> = {
         },
       }),
       body1: ({ theme: { breakpoints, palette } }) => ({
-        fontSize: '1.25rem',
+        fontSize: '0.875rem',
         lineHeight: 1.16,
         fontWeight: 400,
         color: palette.text.primary,
 
-        [breakpoints.down('sm')]: {
-          fontSize: '0.875rem',
+        [breakpoints.up('sm')]: {
+          fontSize: '1.25rem',
+        },
+
+        [breakpoints.up('xxxl')]: {
+          fontSize: '1.5rem',
         },
       }),
     },

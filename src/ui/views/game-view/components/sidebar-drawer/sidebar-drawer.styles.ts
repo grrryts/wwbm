@@ -25,6 +25,11 @@ export const useSidebarDrawerStyles = () => {
         justifyContent: 'center',
         alignItems: 'center',
       },
+
+      [breakpoints.up('xxxl')]: {
+        minWidth: '30rem',
+        maxWidth: '30rem',
+      },
     },
   };
 

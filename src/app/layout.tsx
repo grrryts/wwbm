@@ -8,6 +8,7 @@ import { ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
 import './globals.css';
 import { ReduxStoreProvider } from '@/lib/store/providers';
 import { theme } from '@/lib/theme';
+import '@/ui/css-transitions/fade-transition.css';
 
 const inter = Inter({
   variable: '--font-inter',
@@ -26,6 +27,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <meta
+          name="apple-mobile-web-app-title"
+          content="Who Wants to Be a Millionaire"
+        />
+      </head>
       <body className={inter.className}>
         <AppRouterCacheProvider>
           <MuiThemeProvider theme={theme}>

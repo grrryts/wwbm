@@ -3,15 +3,10 @@ import { createSlice } from '@reduxjs/toolkit';
 const coreSlice = createSlice({
   name: 'core',
   initialState: {
-    viewStep: 1, //* change to 0 when ready
+    viewStep: 0,
   },
   reducers: {
     onChangeViewStep(state) {
-      console.log('onChangeViewStep fired', {
-        state,
-        viewStep: state.viewStep,
-      });
-
       state.viewStep = (state.viewStep + 1) % 3;
     },
   },

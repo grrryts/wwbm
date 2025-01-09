@@ -13,12 +13,14 @@ type Props = {
 };
 
 const AnswerOption = memo<Props>(({ prefix, answer, onClick }) => {
-  const { isMobile } = useAnswerOptionLogic();
-  const sx = useAnswerOptionStyles();
+  const { isMobile, status, handleAnswerClick } = useAnswerOptionLogic({
+    onClick,
+  });
+  const sx = useAnswerOptionStyles({ status });
 
   return (
     <Box sx={sx.wrapper}>
-      <Box sx={sx.shapeWrapper} onClick={onClick}>
+      <Box sx={sx.shapeWrapper} onClick={() => handleAnswerClick(answer)}>
         {isMobile ? (
           <svg
             width="288"

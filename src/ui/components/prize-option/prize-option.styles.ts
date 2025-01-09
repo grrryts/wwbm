@@ -34,14 +34,19 @@ export const usePrizeOptionStyles = ({ state }: Props) => {
     svg: {
       width: 240,
       height: 32,
-      transition: 'all 0.3s ease-in-out',
 
       [breakpoints.up('sm')]: {
         height: 40,
       },
 
+      [breakpoints.up('xxxl')]: {
+        width: 336,
+        height: 48,
+      },
+
       path: {
         stroke: isActive ? palette.primary.main : palette.secondary.main,
+        transition: 'all 0.3s ease-in-out',
       },
     },
   };
@@ -51,6 +56,7 @@ export const usePrizeOptionStyles = ({ state }: Props) => {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
+    transition: 'all 0.3s ease-in-out',
     color: isActive
       ? palette.primary.main
       : state === 'completed'

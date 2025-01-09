@@ -11,7 +11,6 @@ import ResultsView from '../results-view';
 import WelcomeView from '../welcome-view';
 import { useHomeViewLogic } from './home-view.logic';
 import { useHomeViewStyles } from './home-view.styles';
-import '@/ui/css-transitions/fade-transition.css';
 
 const HomeView = memo(() => {
   const { currentStep, nodeRef } = useHomeViewLogic();
