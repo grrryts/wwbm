@@ -58,6 +58,10 @@ export const useGameViewStyles = () => {
     [breakpoints.up('lg')]: {
       pr: 17.5,
     },
+
+    [breakpoints.up('xxl')]: {
+      alignItems: 'center',
+    },
   };
 
   const questionWrapper: SxProps = {
@@ -85,6 +89,10 @@ export const useGameViewStyles = () => {
 
     [breakpoints.up('xl')]: {
       maxWidth: '70%',
+    },
+
+    [breakpoints.up('xxl')]: {
+      justifyContent: 'center',
     },
   };
 
